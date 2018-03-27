@@ -1,8 +1,8 @@
-import App from './App'
 import React from 'react'
-import { StaticRouter } from 'react-router-dom'
 import express from 'express'
+import { StaticRouter } from 'react-router-dom'
 import { renderToString } from 'react-dom/server'
+import App from '../common/App'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 

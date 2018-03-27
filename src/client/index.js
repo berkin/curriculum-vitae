@@ -1,6 +1,6 @@
-import App from './App'
-import BrowserRouter from 'react-router-dom/BrowserRouter'
 import React from 'react'
+import BrowserRouter from 'react-router-dom/BrowserRouter'
+import App from '../common/App'
 import { hydrate } from 'react-dom'
 
 hydrate(
