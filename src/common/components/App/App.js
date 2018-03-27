@@ -1,8 +1,7 @@
 import React from 'react'
 import Route from 'react-router-dom/Route'
 import Switch from 'react-router-dom/Switch'
-import Login from './Login'
-import Home from './Home'
+import { Home, Login } from '../'
 
 const App = () => (
 	<Switch>
