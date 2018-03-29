@@ -36,6 +36,10 @@ server
         <meta charSet='utf-8' />
         <title>Curriculum Vitae</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+				<script type="text/javascript" src="//platform.linkedin.com/in.js">
+			    api_key:   86nqazcvx863aa
+					authorize: true
+				</script>
         ${assets.client.css
 					? `<link rel="stylesheet" href="${assets.client.css}">`
 					: ''}
