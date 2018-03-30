@@ -16,6 +16,7 @@ const details = (state = {}, action) => {
 	switch (action.type) {
 		case SAVE_USER:
 			return action.user.values[0]
+		case LOGOUT:
 		default:
 			return state
 	}

@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { SAVE_USER } from '../../constants/actionTypes'
+import { SAVE_USER, LOGOUT } from '../../constants/actionTypes'
 import { getFullname } from '../../reducers/user'
 
 class Login extends Component {
 	constructor(props) {
 		super(props)
+
 		this.authorize = this.authorize.bind(this)
+		this.logout = this.logout.bind(this)
 	}
 
 	componentDidMount() {
@@ -19,7 +21,7 @@ class Login extends Component {
 
 	getUser() {
 		const { dispatch } = this.props
-		window.IN.API.Profile('me').result(function(user) {
+		window.IN.API.Profile('me').result(user => {
 			dispatch({
 				type: SAVE_USER,
 				user,
@@ -32,6 +34,16 @@ class Login extends Component {
 		window.IN.User.authorize(this.getUser, this)
 	}
 
+	logout(e) {
+		e.preventDefault()
+		const { dispatch } = this.props
+		window.IN.User.logout(() => {
+			dispatch({
+				type: LOGOUT,
+			})
+		}, this)
+	}
+
 	render() {
 		const { isAuthenticated, fullname } = this.props
 		return (
@@ -42,9 +54,6 @@ class Login extends Component {
 					</div>
 				) : (
 					<div>
-						<button onClick={() => console.log(window.IN.User.isAuthorized())}>
-							test
-						</button>
 						<button onClick={this.authorize}>Sign In LinkedIN</button>
 					</div>
 				)}
@@ -55,7 +64,6 @@ class Login extends Component {
 
 const mapStateToProps = state => ({
 	isAuthenticated: state.user.isAuthenticated,
-	user: state.user.details,
 	fullname: getFullname(state),
 })
 
